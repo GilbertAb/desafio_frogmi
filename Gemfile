@@ -72,3 +72,7 @@ end
 gem 'httparty', '~> 0.21.0'
 # A JSON implementation as a JRuby extension.
 gem 'json', '~> 2.7', '>= 2.7.2'
+# Provides a simple API for performing paginated queries with
+# Active Record and Sequel, and includes helpers for rendering
+# pagination links in Rails, Sinatra, and Hanami web apps.
+gem 'will_paginate', '~> 4.0'
