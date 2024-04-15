@@ -1,12 +1,13 @@
 class FeaturesController < ApplicationController
   MAX_PER_PAGE = 1000
+  ALLOWED_MAG_TYPES = ["md", "ml", "ms", "mw", "me", "mi", "mb", "mb_lg", "mh", "mw", "mwr", "mww"]
   
   def index
     # Get all features from the database
     features = Feature.all
     
     # Filter by mag_type if given
-    if params[:mag_type].present?
+    if params[:mag_type].present? && ALLOWED_MAG_TYPES.include?(params[:mag_type])
       mag_types = params[:mag_type].split(',')
       features = features.where(mag_type: mag_types)
     end
