@@ -1,0 +1,12 @@
+.feature-card {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    height: auto;
+    
+  }

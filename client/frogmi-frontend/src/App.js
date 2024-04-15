@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import FeatureCard from './components/FeatureCard';
+
 const App = () => {
   const [features, setFeatures] = useState([]);
 
@@ -20,9 +22,7 @@ const App = () => {
       <h1>Features</h1>
       <ul>
         {features.map(feature => (
-          <li key={feature.id}>
-            {feature.attributes.title}
-          </li>
+          <FeatureCard key={feature.id} feature={feature}></FeatureCard>
         ))}
       </ul>
       
