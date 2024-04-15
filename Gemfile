@@ -65,3 +65,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Gems for challenge
+
+# Makes consuming restful web services dead easy
+gem 'httparty', '~> 0.21.0'
+# A JSON implementation as a JRuby extension.
+gem 'json', '~> 2.7', '>= 2.7.2'
