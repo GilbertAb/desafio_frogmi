@@ -1,4 +1,7 @@
 class Feature < ApplicationRecord
+    # Association with Comment
+    has_many :comments, dependent: :destroy
+    # Validations
     validates :id, presence: true, uniqueness: true
     validates :title, presence: true
     validates :url, presence: true
