@@ -23,5 +23,12 @@ module FrogmiChallenge
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # Configuration to allow CORS requests from any origin
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*' # Puedes cambiar '*' por el dominio de tu aplicación React en producción
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
   end
 end

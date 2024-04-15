@@ -76,3 +76,5 @@ gem 'json', '~> 2.7', '>= 2.7.2'
 # Active Record and Sequel, and includes helpers for rendering
 # pagination links in Rails, Sinatra, and Hanami web apps.
 gem 'will_paginate', '~> 4.0'
+
+gem 'rack-cors', '~> 2.0', '>= 2.0.2'
