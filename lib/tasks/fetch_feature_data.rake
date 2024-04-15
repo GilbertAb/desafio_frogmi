@@ -26,7 +26,7 @@ namespace :fetch_feature_data do
     def save_feature(id, properties, geometry)
         # Create a feature model
         feature = Feature.new(
-            id: id,
+            external_id: id,
             mag: properties['mag'],
             place: properties['place'],
             time: properties['time'],
@@ -46,7 +46,7 @@ namespace :fetch_feature_data do
         end
     end
 
-    def feature_exists?(id)
-        Feature.exists?(id: id)
+    def feature_exists?(externnal_id)
+        Feature.exists?(external_id: external_id)
     end
 end
