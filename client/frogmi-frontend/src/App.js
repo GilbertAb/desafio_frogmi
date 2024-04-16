@@ -10,7 +10,9 @@ const App = () => {
   const [featuresPerPage, setFeaturesPerPage] = useState(10);
   // Filter by mag_type
   const [filterValue, setFilterValue] = useState('');
-
+  // Comments
+  const [comments, setComments] = useState('');
+  
   // Obtain Features when loading the page
   useEffect(() => {
     axios.get(`http://localhost:3000/features/index?page=${currentPage}&per_page=${featuresPerPage}&mag_type=${filterValue}`)
@@ -44,6 +46,24 @@ const App = () => {
     const value = event.target.value.toLowerCase();
     setFilterValue(value);
   };
+  // Handle change on comment input
+  const handleCommentChange = (event, featureId) => {
+    const { value } = event.target;
+    setComments(prevComments => ({...prevComments, [featureId]: value}));
+  };
+
+  // POST to endpoint for creating comments
+  const postComment = (featureId) => {
+    const comment = comments[featureId]
+
+    axios.post(`http://localhost:3000/features/${featureId}/comments`, { body: comment })
+      .then(response => {
+        console.log('Comment posted successfully:', response.data);
+      })
+      .catch(error => {
+        console.error('Error posting comment:', error);
+      });
+  };
 
   return (
     <div style={{paddingLeft:20}}>
@@ -65,7 +85,16 @@ const App = () => {
       <div style={{paddingLeft:20}}>
         <ul>
           {features.map(feature => (
-            <FeatureCard key={feature.id} feature={feature}></FeatureCard>
+            <div>
+              <FeatureCard key={feature.id} feature={feature}></FeatureCard>
+              {/*Comment*/}
+              <div style={{marginLeft:150}}>
+                Leave a comment!<br></br>
+                <input type="text" value={comments[feature.id] || ''} onChange={(e) => handleCommentChange(e, feature.id)}></input>
+                <button onClick={()=> postComment(feature.id)}>Post Comment</button>
+              </div>
+              
+            </div>
           ))}
         </ul>
       </div>
@@ -86,4 +115,3 @@ const App = () => {
 };
 
 export default App;
-
